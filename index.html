@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cyber Hub AI – Kidpreneur Cybersecurity Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #020617;
+    color: #e5e7eb;
+}
+
+h1, h2, h3 {
+    color: #38bdf8;
+    text-shadow: 0 0 6px rgba(56,189,248,0.6);
+}
+
+p { line-height: 1.7; }
+
+/* ================= AUTH ================= */
+#auth {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    width: 360px;
+    background: rgba(2,6,23,0.95);
+    padding: 35px;
+    border-radius: 20px;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 30px rgba(56,189,248,0.4);
+}
+
+.auth-box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #020617;
+    border: 2px solid #22d3ee;
+    border-radius: 10px;
+    color: #e5e7eb;
+}
+
+.auth-box button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: linear-gradient(90deg,#22d3ee,#38bdf8);
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #020617;
+}
+
+.switch {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+/* ================= APP ================= */
+#app { display: none; }
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    position: fixed;
+    width: 280px;
+    height: 100vh;
+    background: #020617;
+    border-right: 3px solid #22d3ee;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: linear-gradient(90deg,#0ea5e9,#22d3ee);
+    color: #020617;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sidebar button.logout {
+    background: #ef4444;
+    color: white;
+}
+
+/* ================= MAIN ================= */
+.main {
+    margin-left: 300px;
+    padding: 30px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: rgba(2,6,23,0.9);
+    border: 2px solid #38bdf8;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 25px rgba(56,189,248,0.3);
+}
+
+.ai-image {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 16px;
+    border: 2px solid #22d3ee;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #020617;
+    color: #e5e7eb;
+    border: 2px solid #22d3ee;
+    border-radius: 10px;
+}
+
+button.action {
+    margin-top: 15px;
+    padding: 12px 18px;
+    background: linear-gradient(90deg,#22d3ee,#38bdf8);
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #020617;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN / REGISTER ================= -->
+<div id="auth">
+    <div class="auth-box">
+        <h1 id="authTitle">Create Account</h1>
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="handleAuth()">Continue</button>
+        <div class="switch" onclick="toggleMode()">Already have an account? Login</div>
+    </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="app">
+
+<div class="sidebar">
+    <h1>🛡 Cyber Hub AI</h1>
+    <button onclick="go('dashboard')">Dashboard</button>
+    <button onclick="go('blog')">Cyber Blog</button>
+    <button onclick="go('threat')">Threat of the Week</button>
+    <button onclick="go('guide')">Beginner Guide</button>
+    <button onclick="go('tools')">Cyber Tools</button>
+    <button onclick="go('quiz')">Quiz</button>
+    <button onclick="go('ai')">AI Assistant</button>
+    <button onclick="go('community')">Community</button>
+    <button onclick="go('resources')">Resources</button>
+    <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<div class="main">
+
+<section id="dashboard" class="card">
+<h2>Cyber Hub Dashboard</h2>
+<p>
+Cyber Hub AI is a kid-preneur friendly cybersecurity awareness platform designed
+to make digital safety fun, colorful, and intelligent.
+</p>
+<img class="ai-image" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485">
+</section>
+
+<section id="blog" class="card">
+<h2>Cybersecurity Blog Hub</h2>
+<p>Learn about phishing, ransomware, privacy, and safe internet habits.</p>
+<img class="ai-image" src="ak.jpg">
+</section>
+
+<section id="threat" class="card">
+    <h2>Threat of the Week</h2>
+    <p>Phishing is a cyber attack where scammers send fake emails, messages, or websites to trick you into giving sensitive information like passwords, OTPs, or bank details</p>
+</section>
+
+
+<section id="guide" class="card">
+<h2>Beginner’s Cybersecurity Guide</h2>
+<ul>
+<li>Password safety</li>
+<li>Phishing awareness</li>
+<li>Safe browsing</li>
+<li>AI in cyber defense</li>
+</ul>
+<img class="ai-image" src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9">
+</section>
+
+<section id="tools" class="card">
+<h2>Cyber Tools</h2>
+<input id="pwd" placeholder="Enter password">
+<button class="action" onclick="checkPwd()">Check Password</button>
+<p id="pwdResult"></p>
+</section>
+<section id="url-scanner" class="card">
+<h2>Cyber Tool: URL Scanner</h2>
+
+<p>Enter a website link to check if it looks suspicious:</p>
+
+<input type="text" id="urlInput" placeholder="https://example.com"
+       style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;">
+
+<br><br>
+
+<button class="action"
+onclick="
+let url = document.getElementById('urlInput').value.toLowerCase();
+if(url === ''){
+    alert('Please enter a URL');
+}
+else if(
+    url.includes('bit.ly') ||
+    url.includes('tinyurl') ||
+    url.includes('free') ||
+    url.includes('login') ||
+    url.includes('verify') ||
+    url.includes('http://')
+){
+    alert('⚠️ Warning: This URL looks suspicious!');
+}
+else{
+    alert('✅ This URL looks safe (basic check)');
+}
+">
+Scan URL
+</button>
+
+<p style="font-size:13px; color:#555; margin-top:10px;">
+* This tool performs a basic safety check. It does not replace real antivirus or security scanners.
+</p>
+</section>
+<section id="videos" class="card">
+    <iframe width="850" height="720" src="https://www.youtube.com/embed/SKKH15VFj3k" title="How To Prevent Cyber Attacks | Types of Cyber Attack | What is Cyber Attack | Intellipaat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+
+
+<section id="quiz" class="card">
+<h2>Cyber Quiz</h2>
+
+<p>1. What is phishing?</p>
+<button class="action" onclick="alert('Correct ✅')">Fake message scam</button>
+<button class="action" onclick="alert('Wrong ❌')">Antivirus</button>
+
+<p>2. Which is a strong password?</p>
+<button class="action" onclick="alert('Wrong ❌')">123456</button>
+<button class="action" onclick="alert('Correct ✅')">Cyber@2025!</button>
+
+<p>3. What should you do with suspicious emails?</p>
+<button class="action" onclick="alert('Correct ✅')">Ignore or report</button>
+<button class="action" onclick="alert('Wrong ❌')">Click the link</button>
+
+<p>4. HTTPS means?</p>
+<button class="action" onclick="alert('Correct ✅')">Secure version of HTTP</button>
+<button class="action" onclick="alert('Wrong ❌')">Hacker Tracking System</button>
+
+<p>5. Which is cyberbullying?</p>
+<button class="action" onclick="alert('Wrong ❌')">Watching videos</button>
+<button class="action" onclick="alert('Correct ✅')">Online harassment</button>
+
+<p>6. Why should OTP not be shared?</p>
+<button class="action" onclick="alert('Correct ✅')">It is a security code</button>
+<button class="action" onclick="alert('Wrong ❌')">It slows the phone</button>
+
+<p>7. What is malware?</p>
+<button class="action" onclick="alert('Correct ✅')">Malicious software</button>
+<button class="action" onclick="alert('Wrong ❌')">Internet browser</button>
+
+<p>8. What should you check before clicking a link?</p>
+<button class="action" onclick="alert('Correct ✅')">Sender and URL</button>
+<button class="action" onclick="alert('Wrong ❌')">Emoji style</button>
+
+<p>9. Which is a safe online habit?</p>
+<button class="action" onclick="alert('Wrong ❌')">Sharing passwords</button>
+<button class="action" onclick="alert('Correct ✅')">Keeping accounts private</button>
+
+<p>10. What is 2-factor authentication?</p>
+<button class="action" onclick="alert('Wrong ❌')">Virus scan</button>
+<button class="action" onclick="alert('Correct ✅')">Extra security step</button>
+
+</section>
+
+
+<section id="ai" class="card">
+<h2>AI Cyber Assistant </h2>
+
+<textarea id="aiQuestion" rows="4"
+placeholder="Ask your cybersecurity question..."></textarea>
+
+<button class="action" onclick="askAI()">Ask AI</button>
+
+<p id="aiAnswer" style="margin-top:15px;"></p>
+</section>
+
+
+
+<section id="community" class="card">
+<h2>Community</h2>
+<p>Learn cybersecurity together in a safe environment.</p>
+</section>
+
+<section id="resources" class="card">
+<h2>Resources</h2>
+<ul>
+<li>Cyber checklists</li>
+<li>Certification prep guides</li>
+</ul>
+</section>
+
+</div>
+</div>
+
+<script>
+
+let mode = "register";
+
+/* AUTO LOGIN CHECK */
+if (localStorage.getItem("session") === "active") {
+    showApp();
+}
+/* ================= GEMINI CONFIG ================= */
+const GEMINI_API_KEY = "AIzaSyAsICmtf2er1uWUox66Yn6VHDf59RUrEog";
+
+/* ================= GEMINI AI FUNCTION ================= */
+async function askAI() {
+    const question = document.getElementById("aiQuestion").value.trim();
+    const output = document.getElementById("aiAnswer");
+
+    if (!question) {
+        output.innerText = "Please enter a question.";
+        return;
+    }
+
+    output.innerHTML = '<span class="loading">🤖 AI is thinking</span>';
+
+    try {
+        const response = await fetch(
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: "You are a cybersecurity expert for students.\n\n" + question }] }]
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.error) {
+            output.innerText = "API Error: " + data.error.message;
+        } else {
+            output.innerText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
+        }
+
+    } catch (error) {
+        output.innerText = "Error connecting to Gemini API.";
+        console.error(error);
+    }
+}
+
+
+/* TOGGLE LOGIN / REGISTER */
+function toggleMode() {
+    mode = mode === "register" ? "login" : "register";
+    document.getElementById("authTitle").innerText =
+        mode === "register" ? "Create Account" : "Login";
+    document.querySelector(".switch").innerText =
+        mode === "register"
+        ? "Already have an account? Login"
+        : "New user? Create account";
+}
+
+/* HASH PASSWORD */
+async function hashPassword(text) {
+    const enc = new TextEncoder().encode(text);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    return Array.from(new Uint8Array(buf))
+        .map(b => b.toString(16).padStart(2,"0"))
+        .join("");
+}
+
+/* AUTH HANDLER */
+async function handleAuth() {
+    const u = username.value.trim();
+    const p = password.value.trim();
+    if (!u || !p) return alert("Fill all fields");
+
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+    const hashed = await hashPassword(p);
+
+    if (mode === "register") {
+        if (users[u]) return alert("User already exists");
+        users[u] = hashed;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Account created. Please login.");
+        toggleMode();
+    } else {
+        if (users[u] !== hashed) return alert("Invalid login");
+        localStorage.setItem("session", "active");
+        showApp();
+    }
+}
+
+/* SHOW APP */
+function showApp() {
+    document.getElementById("auth").style.display = "none";
+    document.getElementById("app").style.display = "block";
+}
+
+/* LOGOUT */
+function logout() {
+    localStorage.clear();
+    location.reload();
+}
+
+/* NAVIGATION */
+function go(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+/* PASSWORD CHECKER */
+function checkPwd() {
+    pwdResult.innerText =
+        pwd.value.length >= 8 ? "Strong Password 💪" : "Weak Password ⚠️";
+}
+</script>
+
+</body>
+</html>
