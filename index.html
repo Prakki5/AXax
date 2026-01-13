@@ -6,6 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+    .top-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.gov-btn {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: #ef4444; /* red for helpline */
+}
+.gov-btn[style] {
+    /* overrides for portal button */
+    background: #1e3a8a !important;
+}
 /* ================= GLOBAL ================= */
 body {
     margin: 0;
@@ -157,6 +175,17 @@ button.action {
 </head>
 
 <body>
+ <!-- TOP NAVIGATION BAR -->
+<div class="top-nav" id="top-nav" style="display:flex; gap:10px; position:fixed; top:0; right:20px; z-index:100;">
+    <!-- 1930 Helpline -->
+    <button class="gov-btn">🚨 1930 HELPLINE</button>
+
+    <!-- Government Portal -->
+    <button class="gov-btn" style="background:#1e3a8a;" onclick="window.open('https://cybercrime.gov.in', '_blank')">GOVT PORTAL</button>
+</div>
+
+
+
 
 <!-- ================= LOGIN / REGISTER ================= -->
 <div id="auth">
@@ -352,7 +381,7 @@ if (localStorage.getItem("session") === "active") {
     showApp();
 }
 /* ================= GEMINI CONFIG ================= */
-const GEMINI_API_KEY = "AIzaSyDCOzLsmgMcwh1TUALcGVJPCz26RuFRzZ8";
+const GEMINI_API_KEY = "AIzaSyAeV-mFGfadNB0y4SYvVzE1ZQgZ12tMo0s";
 
 /* ================= GEMINI AI FUNCTION ================= */
 async function askAI() {
@@ -383,11 +412,11 @@ async function askAI() {
         if (data.error) {
             output.innerText = "API Error: " + data.error.message;
         } else {
-            output.innerText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
+            output.innerText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from🤖 AI.";
         }
 
     } catch (error) {
-        output.innerText = "Error connecting to Gemini API.";
+        output.innerText = "Error connecting to 🤖 AI.";
         console.error(error);
     }
 }
@@ -461,4 +490,3 @@ function checkPwd() {
 
 </body>
 </html>
-
